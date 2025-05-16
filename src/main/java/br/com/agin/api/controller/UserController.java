@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("{userId}")
+    @GetMapping("/{userId}")
     public ResponseEntity<User> listarUsuarioPeloId(@PathVariable("userId") String userId) {
         var user = userService.listarUsuarioPeloId(userId);
 
@@ -37,7 +38,7 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<List<User>> listarUsuarios() {
-        
+
         var user = userService.listarUsuarios();
         return ResponseEntity.ok(user);
     }
@@ -46,6 +47,14 @@ public class UserController {
     public ResponseEntity<User> criandoUsuario(@RequestBody CriandoUsuarioDto criandoUsuarioDto) {
         var userId = userService.criandoUsuario(criandoUsuarioDto);
         return ResponseEntity.created(URI.create("/user/" + userId.toString())).build();
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> deletarPeloId(@PathVariable("userId") String userId) {
+
+        userService.deletarPeloId(userId);
+
+        return ResponseEntity.noContent().build();
     }
 
 }

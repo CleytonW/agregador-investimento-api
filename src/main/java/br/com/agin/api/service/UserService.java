@@ -40,4 +40,14 @@ public class UserService {
 
         return usuarioSalvo.getUserId();
     }
+
+    public void deletarPeloId(String userId) {
+        var id = UUID.fromString(userId);
+
+        var usuarioExiste = userRepository.existsById(id);
+
+        if (usuarioExiste) {
+            userRepository.deleteById(id);
+        }
+    }
 }
