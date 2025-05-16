@@ -31,7 +31,7 @@ public class User {
     private String senha;
 
     @CreationTimestamp
-    private Instant creandoTimestamp;
+    private Instant creationTimestamp;
 
     @UpdateTimestamp
     private Instant updateTimestamp;
@@ -39,13 +39,13 @@ public class User {
     public User() {
     }
 
-    public User(UUID userId, String nome, String email, String senha, Instant creandoTimestamp,
+    public User(UUID userId, String nome, String email, String senha, Instant creationTimestamp,
             Instant updateTimestamp) {
         this.userId = userId;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.creandoTimestamp = creandoTimestamp;
+        this.creationTimestamp = creationTimestamp;
         this.updateTimestamp = updateTimestamp;
     }
 
@@ -82,11 +82,11 @@ public class User {
     }
 
     public Instant getCreandoTimestamp() {
-        return creandoTimestamp;
+        return creationTimestamp;
     }
 
     public void setCreandoTimestamp(Instant creandoTimestamp) {
-        this.creandoTimestamp = creandoTimestamp;
+        this.creationTimestamp = creandoTimestamp;
     }
 
     public Instant getUpdateTimestamp() {
