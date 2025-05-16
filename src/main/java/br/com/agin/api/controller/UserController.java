@@ -13,7 +13,6 @@ import br.com.agin.api.entity.User;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    
 
     @GetMapping("{id}")
     public ResponseEntity<User> listarUsuarioPeloId(@PathVariable("id") String id) {
