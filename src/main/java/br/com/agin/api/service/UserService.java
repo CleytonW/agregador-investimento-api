@@ -1,6 +1,6 @@
 package br.com.agin.api.service;
 
-import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -28,5 +28,11 @@ public class UserService {
         var usuarioSalvo = userRepository.save(entity);
 
         return usuarioSalvo.getUserId();
+    }
+
+    public Optional<User> listarUsuarioPeloId(String userId) {
+
+        return userRepository.findById(UUID.fromString(userId));
+
     }
 }

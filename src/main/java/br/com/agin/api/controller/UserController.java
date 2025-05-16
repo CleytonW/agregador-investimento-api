@@ -23,10 +23,15 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<User> listarUsuarioPeloId(@PathVariable("id") String id) {
+    @GetMapping("{userId}")
+    public ResponseEntity<User> listarUsuarioPeloId(@PathVariable("userId") String userId) {
+        var user = userService.listarUsuarioPeloId(userId);
 
-        return null;
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        }
+
+        return ResponseEntity.notFound().build();
     }
 
     @PostMapping()
