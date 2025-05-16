@@ -1,6 +1,7 @@
 package br.com.agin.api.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,13 @@ public class UserController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<User>> listarUsuarios() {
+        
+        var user = userService.listarUsuarios();
+        return ResponseEntity.ok(user);
     }
 
     @PostMapping()

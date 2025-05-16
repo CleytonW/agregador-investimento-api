@@ -1,5 +1,6 @@
 package br.com.agin.api.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -18,6 +19,16 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public Optional<User> listarUsuarioPeloId(String userId) {
+
+        return userRepository.findById(UUID.fromString(userId));
+
+    }
+
+    public List<User> listarUsuarios() {
+        return userRepository.findAll();
+    }
+
     public UUID criandoUsuario(CriandoUsuarioDto criandoUsuarioDto) {
 
         var entity = new User();
@@ -28,11 +39,5 @@ public class UserService {
         var usuarioSalvo = userRepository.save(entity);
 
         return usuarioSalvo.getUserId();
-    }
-
-    public Optional<User> listarUsuarioPeloId(String userId) {
-
-        return userRepository.findById(UUID.fromString(userId));
-
     }
 }
