@@ -1,6 +1,5 @@
 package br.com.agin.api.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,10 +22,9 @@ public class UserController {
     }
 
     @PostMapping()
-    public ResponseEntity<User> criandoUsuario(@RequestBody CreateUserDto createUserDto) {
+    public ResponseEntity<User> criandoUsuario(@RequestBody CriandoUsuarioDto criandoUsuarioDto) {
 
         return null;
     }
 
-    //@Autowired
 }
