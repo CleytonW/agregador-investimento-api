@@ -9,10 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.agin.api.entity.User;
+import br.com.agin.api.service.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
+    private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("{id}")
     public ResponseEntity<User> listarUsuarioPeloId(@PathVariable("id") String id) {
