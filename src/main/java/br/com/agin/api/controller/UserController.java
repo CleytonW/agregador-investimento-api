@@ -1,5 +1,7 @@
 package br.com.agin.api.controller;
 
+import java.net.URI;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,8 +31,8 @@ public class UserController {
 
     @PostMapping()
     public ResponseEntity<User> criandoUsuario(@RequestBody CriandoUsuarioDto criandoUsuarioDto) {
-
-        return null;
+        var userId = userService.criandoUsuario(criandoUsuarioDto);
+        return ResponseEntity.created(URI.create("/user/" + userId.toString())).build();
     }
 
 }
