@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.agin.api.controller.AtualizarUsuarioDto;
 import br.com.agin.api.controller.CriandoUsuarioDto;
 import br.com.agin.api.entity.User;
 import br.com.agin.api.repository.UserRepository;
@@ -39,6 +40,27 @@ public class UserService {
         var usuarioSalvo = userRepository.save(entity);
 
         return usuarioSalvo.getUserId();
+    }
+
+    public void atualizarUsuarioPeloId(String userId, AtualizarUsuarioDto atualizarUsuarioDto) {
+        var id = UUID.fromString(userId);
+
+        var usuarioExiste = userRepository.findById(id);
+
+        if (usuarioExiste.isPresent()) {
+            var usuario = usuarioExiste.get();
+
+            if (atualizarUsuarioDto.nome() != null) {
+                usuario.setNome(atualizarUsuarioDto.nome());
+            }
+
+            if (atualizarUsuarioDto.senha() != null) {
+                usuario.setSenha(atualizarUsuarioDto.senha());
+            }
+
+            userRepository.save(usuario);
+        }
+
     }
 
     public void deletarPeloId(String userId) {
