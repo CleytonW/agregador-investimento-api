@@ -43,5 +43,3 @@ Para rodar os testes automatizados:
 ## Configuração
 As configurações da aplicação estão no arquivo `src/main/resources/application.properties`.
 
-## Autor
-Desenvolvido por [Cleyton Melo](https://github.com/CleytonW).
